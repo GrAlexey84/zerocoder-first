@@ -19,8 +19,8 @@ class Store:
         if product_name in self.items:
             print(f"Продукт {product_name} стоит: {self.items[product_name]} руб")
         else:
-            print(f"Продукт {product_name} отсутствует в магазине {self.name}")
-            return None
+            print(f"Продукт {product_name} отсутствует в магазине {self.name}:")
+
 
     #Изменить цену товара:
     def update_prise(self, product_name, price):
