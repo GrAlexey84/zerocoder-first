@@ -1,0 +1,32 @@
+{
+  "animals": [
+    {
+      "type": "Bird",
+      "name": "\u041f\u043e\u043f\u0443\u0433\u0430\u0439 \u0413\u043e\u0448\u0430",
+      "age": 5,
+      "color": "\u0411\u0435\u043b\u044b\u0439"
+    },
+    {
+      "type": "Mammal",
+      "name": "\u0421\u043e\u0431\u0430\u043a\u0430 \u0411\u0438\u043c",
+      "age": 7,
+      "color": "\u0427\u0451\u0440\u043d\u044b\u0439"
+    },
+    {
+      "type": "Reptile",
+      "name": "\u042f\u0449\u0435\u0440\u0438\u0446\u0430 \u0416\u0430\u043d\u043d\u0430",
+      "age": 3,
+      "color": "\u0417\u0435\u043b\u0451\u043d\u0430\u044f"
+    }
+  ],
+  "workers": [
+    {
+      "type": "ZooKeeper",
+      "name": "\u0418\u0432\u0430\u043d"
+    },
+    {
+      "type": "Veterinarian",
+      "name": "\u0410\u043d\u043d\u0430"
+    }
+  ]
+}
