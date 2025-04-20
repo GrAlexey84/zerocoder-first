@@ -1,39 +1,64 @@
-class Bird():
-    def __init__(self, name, voice, color):
+import  random
+import time
+
+class Hero:
+    def __init__(self, name, health = 100, attack_power = 20):
         self.name = name
-        self.voice = voice
-        self.color = color
+        self.health = health
+        self.attack_power = attack_power
 
-    def fly (self):
-        print(f"{self.name} летает")
+    def attack(self, other):
+        damage = random.randint(self.attack_power - 5, self.attack_power + 5)
+        other.health -= damage
+        print(f"\n {self.name} нанёс игроку {other.name} {damage} урона")
 
-    def eat (self):
-        print(f"{self.name} кушает")
+    def is_alive(self):
+        return self.health > 0
 
-    def sing (self):
-        print(f"{self.name} поёт - чирик")
+    def __str__(self):
+        return f"{self.name}"
 
-    def info(self):
-        print(f"{self.name} - имя")
-        print(f"{self.voice} - голос")
-        print(f"{self.color} - окрас")
+class Game:
+    def __init__(self, user_name, computer = "Компьютер"):
+        self.player = Hero(user_name)
+        self.computer = Hero(computer)
 
-class Pigeon(Bird):
-    def __init__(self, name, voice, color, favorit_food):
-        super().__init__(name, voice, color)
-        self.favorit_food = favorit_food
+    def start(self):
+        print("Бой начинается")
+        print(f"{self.player} против {self.computer}")
+        print("=" * 40)
 
-    def walk(self):
-        print(f"{self.name} гуляет")
+        time.sleep(1)
+        round_num = 1
 
-    def sing (self):
-        print(f"{self.name} поёт - курлык")
+        while self.player.is_alive() and self.computer.is_alive():
+            print("-" * 40)
+            print(f"Раунд {round_num}")
 
-bird_1 = Pigeon("Гоша", "курлык", "серый", "хлебные крошки")
-bird_2 = Bird("Маша", "чирик", "коричневый")
+            # Ход игрока
+            self.player.attack(self.computer)
+            print(f"У {self.computer} сталось {self.computer.health} здоровья")
 
-bird_1.fly()
-bird_1.sing()
-bird_1.info()
+            if not self.computer.is_alive():
+                break
 
-bird_1.walk()
+            # Ход компьютера
+            self.computer.attack(self.player)
+            print(f"У {self.player} осталось {self.player.health} здоровья")
+
+            round_num += 1
+            time.sleep(1)
+
+        if self.player.is_alive():
+            print(f"{self.player} побеждает!")
+
+        else:
+            print(f"{self.computer} побеждает!")
+
+        print("Бой закончен")
+
+
+# Запуск игры
+user_name = input("Введите имя игрока: ")
+game = Game(user_name)
+game.start()
